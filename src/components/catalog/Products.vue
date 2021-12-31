@@ -53,6 +53,18 @@
     gap: 2rem;
   }
 
+  @media screen and (max-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .spinner-wrapper {
     width: 100%;
     text-align: center;
