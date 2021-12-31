@@ -4,13 +4,13 @@ import { Cart } from '@/typings';
 
 import ProductModel from '@/models/product.model';
 
-const cart: Cart = {};
+const cart: Cart = JSON.parse(localStorage.getItem('cart') || '{}');
 
 function getIdString<T extends {id: number}>(obj: T): string {
   return '_' + obj.id.toString();
 }
 
-export default createStore({
+const store = createStore({
   state: {
     cart,
   },
@@ -50,4 +50,10 @@ export default createStore({
   },
   modules: {
   }
-})
+});
+
+store.subscribe((mutation, state) => {
+  localStorage.setItem('cart', JSON.stringify(state.cart));
+});
+
+export default store;
