@@ -10,6 +10,20 @@
           <router-link class="nav-link" to="/catalog">Catalog</router-link>
         </div>
       </div>
+      <div class="me-3">
+        <CartIcon />
+      </div>
     </div>
   </nav>  
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import CartIcon from './CartIcon.vue';
+
+export default defineComponent({
+  components: {
+    CartIcon
+  }
+})
+</script>

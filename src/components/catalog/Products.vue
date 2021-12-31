@@ -1,5 +1,10 @@
 <template>
-  <div class="grid">
+  <div class="spinner-wrapper" v-if="loading">
+    <div class="spinner-border mt-5" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <div class="grid" v-else>
     <Product v-for="(product, idx) in products" :key="idx" :product="product" />
   </div>  
 </template>
@@ -22,7 +27,8 @@
     data() {
       const products: ProductModel[] = [];
       return {
-        products
+        products,
+        loading: true
       }
     },
     created() {
@@ -31,7 +37,8 @@
     methods: {
       fetchProducts() {
         return productsService.query().then(products => {
-          this.products = products
+          this.products = products;
+          this.loading = false;
         });
       }
     }
@@ -44,5 +51,16 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+  }
+
+  .spinner-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
+  .spinner-border {
+    width: 8rem;
+    height: 8rem;
+    font-size: 1.5rem;
   }
 </style>

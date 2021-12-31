@@ -6,19 +6,36 @@ import ProductModel from '@/models/product.model';
 
 const cart: Cart = {};
 
+function getIdString<T extends {id: number}>(obj: T): string {
+  return '_' + obj.id.toString();
+}
+
 export default createStore({
   state: {
     cart,
   },
+  getters: {
+    cartAsArray: state => {
+      return Object.values(state.cart);
+    },
+    numberOfItemsInCart: state => {
+      return Object.values(state.cart).reduce((acc, item) => {
+        return acc + item.quantity;
+      }, 0);
+    },
+    cartTotal: state => {
+      return Object.values(state.cart).reduce((acc, item) => {
+        return acc + item.quantity * item.product.price;
+      }, 0);
+    }
+  },
   mutations: {
     addToCart(state, product: ProductModel) {
       
-      const key = '_' + product.id.toString();
-
-      if(state.cart[key]) {
-        state.cart[key].quantity++;
+      if(state.cart[getIdString(product)]) {
+        state.cart[getIdString(product)].quantity++;
       } else {
-        state.cart[key] = {
+        state.cart[getIdString(product)] = {
           product,
           quantity: 1,
         };
@@ -26,9 +43,7 @@ export default createStore({
 
     },
     removeFromCart(state, product: ProductModel) {
-      const key = '_' + product.id.toString();
-
-      delete state.cart[key];
+      delete state.cart[getIdString(product)];
     }   
   },
   actions: {
