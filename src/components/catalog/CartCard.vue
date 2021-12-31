@@ -1,15 +1,24 @@
 <template>
   <div class="card">
     <ul class="list-group list-group-flush">
+
       <li class="list-group-item">
         <router-link class="cart-link" to="/cart">
           <h4 class="card-title mt-1 mb-3">Your Cart</h4>
         </router-link>
       </li>
+
       <CartCardRow v-for="(cartItem, idx) in $store.getters.cartAsArray" :key="idx" :cartItem="cartItem" />
-      <li class="list-group-item px-4 py-3">
-        <button class="btn btn-primary w-100" :disabled="!$store.getters.numberOfItemsInCart">Checkout</button>
+
+      <li class="list-group-item list-bottom" v-if="!$store.getters.cartAsArray.length">
+        <p class="text-center m-0">Your cart is empty</p>
       </li>
+
+      <li class="list-group-item list-bottom">
+        <span class="col">Total: <strong>${{$store.getters.cartTotal}}</strong></span>
+        <button class="btn btn-primary" :disabled="!$store.getters.numberOfItemsInCart">Checkout</button>
+      </li>
+
     </ul>
   </div>
 </template>
@@ -35,6 +44,12 @@ export default defineComponent({
 
   .cart-link:hover {
     color: #285388;
+  }
+
+  .list-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 </style>
