@@ -1,3 +1,18 @@
 <template>
-  <h1>Cart</h1>
+  <div class="container">
+    <h1 class="text-center">Cart</h1>
+    <CartTable />
+  </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import CartTable from '@/components/cart/CartTable.vue';
+
+export default defineComponent({
+  name: 'Cart',
+  components: {
+    CartTable
+  }
+})
+</script>
