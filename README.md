@@ -1,19 +1,7 @@
 # lb-store-vue
 
-## Project setup
-```
-npm install
-```
+WIP (Cart page and checkout)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Layout idea and demo products from [here](https://auth0.com/blog/state-management-in-svelte-applications/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Screenshot](https://i.imgur.com/FRVPuRg.png)
