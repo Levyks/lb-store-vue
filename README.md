@@ -6,7 +6,11 @@ It currently consists of 2 pages, the "Catalog" and the "Cart", the items in the
 
 This cart is also stored in localStorage, so if you reload the page, the cart will be restored.
 
+Demo available in [levyks.com/lb-store-vue](https://www.levyks.com/lb-store-vue)
+
 Layout idea and demo products from [here](https://auth0.com/blog/state-management-in-svelte-applications/)
+
+### Checkout not yet implemented
 
 ![Screenshot 1](https://i.imgur.com/QBQZcOt.png)
 ![Screenshot 2](https://i.imgur.com/AcSXxAr.png)
