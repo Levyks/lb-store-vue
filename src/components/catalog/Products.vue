@@ -1,45 +1,32 @@
 <template>
-  <div class="spinner-wrapper" v-if="loading">
-    <div class="spinner-border mt-5" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+
+  <div class="grid" v-if="products.results.length">
+    <Product v-for="(product, idx) in products.results" :key="idx" :product="product" />
   </div>
-  <div class="grid" v-else>
-    <Product v-for="(product, idx) in products" :key="idx" :product="product" />
-  </div>  
+
+  <div class="text-center mt-4" v-else>
+    <h3 class="text-secondary">No products found</h3>
+  </div>
+
 </template>
 
 <script lang="ts">
   import { defineComponent } from 'vue';
 
   import Product from './Product.vue';
-  
-  import ProductsService from '@/services/products.service';
+
+  import PaginationModel from '@/models/pagination.model';
   import ProductModel from '@/models/product.model';
-  
-  const productsService = new ProductsService();
 
   export default defineComponent({
     name: 'Products',
     components: {
       Product
     },
-    data() {
-      const products: ProductModel[] = [];
-      return {
-        products,
-        loading: true
-      }
-    },
-    created() {
-      this.fetchProducts();
-    },
-    methods: {
-      fetchProducts() {
-        return productsService.query().then(products => {
-          this.products = products;
-          this.loading = false;
-        });
+    props: {
+      products: {
+        type: Object as () => PaginationModel<ProductModel>,
+        required: true
       }
     }
   });
@@ -63,16 +50,5 @@
     .grid {
       grid-template-columns: 1fr;
     }
-  }
-
-  .spinner-wrapper {
-    width: 100%;
-    text-align: center;
-  }
-
-  .spinner-border {
-    width: 8rem;
-    height: 8rem;
-    font-size: 1.5rem;
   }
 </style>

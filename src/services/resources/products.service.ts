@@ -1,7 +1,7 @@
-import ResourceService from "./resource.service";
+import PaginatedResourceService from "./paginated.service";
 import ProductModel from "@/models/product.model";
 
-class ProductsService extends ResourceService<ProductModel> {
+class ProductsService extends PaginatedResourceService<ProductModel> {
   resource = ProductModel;
   path = "products";
 }

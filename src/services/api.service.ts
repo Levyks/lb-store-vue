@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://demo-store.marciolevy.repl.co/api';
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 class ApiService {
   static get(url: string, params?: any) {
