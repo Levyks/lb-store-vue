@@ -14,6 +14,7 @@ Other features:
 - Filtering
 
 Demo available in [levyks.com/lb-store-vue](https://www.levyks.com/lb-store-vue)
+
 API repo (Django + DRF): [Levyks/mock-store-api](https://github.com/Levyks/mock-store-api)
 
 Layout heavily inspired by this nice ["State Management in Svelte Applications" post](https://auth0.com/blog/state-management-in-svelte-applications/) by [Fikayo Adepoju](https://github.com/coderonfleek), some of the items/images in the demo catalog were also taken from that repo
