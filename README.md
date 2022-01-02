@@ -1,6 +1,6 @@
 # LB Mock Store (Vue version)
 
-Simple project that I used to test and learn about state management in Vue with Vuex
+Simple project that I used to test and learn about state management in Vue with Vuex, as well as Vue in general
 
 Pages:
 - Catalog
