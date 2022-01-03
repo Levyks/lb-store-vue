@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search" v-model="search" @input="handleInput">
+      <input type="text" class="form-control" placeholder="Search" :value="query" @input="search_debouncer.debounce($event.target.value)">
       <span class="input-group-text"><i class="fas fa-search"></i></span>
     </div>
   </div>
@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Debouncer from 'svelte-debouncer';
 
 const DEBOUNCE_MS = 1000;
 
@@ -16,8 +17,7 @@ export default defineComponent({
   name: "Search",
   data() {
     return {
-      search: this.query,
-      debounce: 0
+      search_debouncer: new Debouncer((q: string) => this.$emit("search", q.trim()), DEBOUNCE_MS, true),
     }
   },
   props: {
@@ -26,19 +26,6 @@ export default defineComponent({
       default: ""
     }
   },
-  emits: [
-    "search"
-  ],
-  methods: {
-    handleInput() {
-      if (this.debounce) {
-        clearTimeout(this.debounce);
-      }
-      this.debounce = setTimeout(() => {
-        this.search = this.search.trim();
-        this.$emit("search", this.search.trim());
-      }, DEBOUNCE_MS);
-    }  
-  }
+  emits: [ "search" ]
 });
 </script>
