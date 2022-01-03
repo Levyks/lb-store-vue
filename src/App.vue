@@ -1,7 +1,10 @@
 <template>
   <Navbar />
   <div class="mt-3 content-wrapper">
-    <router-view/>
+    <router-view v-if="$store.state.auth.checked"/>
+    <Center class="h-100" v-else>
+      <Spinner size="8rem" thickness="1.25rem"/>
+    </Center>
   </div>
 </template>
 
@@ -9,11 +12,15 @@
 import { defineComponent } from 'vue'
 
 import Navbar from '@/components/navbar';
+import Spinner from '@/components/misc/Spinner.vue';
+import Center from '@/components/misc/Center.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    Spinner,
+    Center
   }
 })
 </script>
