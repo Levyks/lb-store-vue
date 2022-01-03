@@ -5,6 +5,8 @@ Simple project that I used to test and learn about state management in Vue with 
 Pages:
 - Catalog
 - Cart
+- Login
+- Profile
 
 The state of the cart is shared across both pages, as well as in the navbar, this state is saved in the localStorage, so if you reload the page, the cart will be restored.
 
@@ -12,8 +14,10 @@ Other features:
 - Pagination
 - Searching (with debounce in the input)
 - Filtering
+- Authentication (Login/Logout/Change Password)
 
 Demo available in [levyks.com/lb-store-vue](https://www.levyks.com/lb-store-vue)
+(Example user -> email: johndoe@levyks.com | password: 12345)
 
 API repo (Django + DRF): [Levyks/mock-store-api](https://github.com/Levyks/mock-store-api)
 
