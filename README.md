@@ -14,6 +14,7 @@ Other features:
 - Filtering
 
 Demo available in [levyks.com/lb-store-vue](https://www.levyks.com/lb-store-vue)
+(Example user -> email: johndoe@levyks.com | password: 12345)
 
 API repo (Django + DRF): [Levyks/mock-store-api](https://github.com/Levyks/mock-store-api)
 
