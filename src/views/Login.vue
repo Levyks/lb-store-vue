@@ -103,6 +103,6 @@ export default defineComponent({
 
 <style scoped>
   .card {
-    min-width: 400px;
+    width: 400px;
   }
 </style>
